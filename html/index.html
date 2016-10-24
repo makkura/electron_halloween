@@ -32,6 +32,11 @@
 
       leftRightToggle = "skeleton-left"
 
+      /* update wrapper size */
+      var wrapper = document.getElementById("wrapper");
+      wrapper.style.heith = h;
+      wrapper.style.width = w;
+
       for(i = 1; i <= down; i++){
         var row = document.createElement("div")
         row.className += "block"
@@ -56,7 +61,6 @@
           }
 
         }
-        document.getElementById("wrapper");
         wrapper.appendChild(row)
       }
     }, false)
