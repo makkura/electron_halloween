@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../css/skeletons.css">
+    <title>All The Skeletons</title>
+  </head>
+  <body>
+    <div id="wrapper"><div>
+  </body>
+  <script>
+    require('../renderer.js')
+
+    document.addEventListener('keydown', event => {
+        if (event.key === 'Escape' || event.keyCode === 27) {
+            window.close();
+        }
+    });
+
+    document.addEventListener('DOMContentLoaded', function(){
+      var w = window.innerWidth;
+      var h = window.innerHeight;
+      var tileWidth = 35;
+      var tileHeight = 47;
+
+      var across = parseInt(w/tileWidth, 10)
+      var down = parseInt(h/tileHeight, 10)
+      console.log("window Width: " + w )
+      console.log("Window Height: " + h)
+      console.log("Across: " + across)
+      console.log("Down: " + down)
+
+      leftRightToggle = "skeleton-left"
+
+      for(i = 1; i <= down; i++){
+        var row = document.createElement("div")
+        row.className += "block"
+        for(j = 1; j <= across; j++){
+          if(i == 1) {
+            var test = document.createElement("div")
+            test.className += "skeleton-down"
+            row.appendChild(test); 
+          } else if(i == down) {
+            var test = document.createElement("div")
+            test.className += "skeleton-up"
+            row.appendChild(test); 
+          } else {
+            if( i % 2 == 0){
+              leftRightToggle = "skeleton-right"
+            } else {
+              leftRightToggle = "skeleton-left"
+            }
+            var test = document.createElement("div")
+            test.className += leftRightToggle
+            row.appendChild(test); 
+          }
+
+        }
+        document.getElementById("wrapper");
+        wrapper.appendChild(row)
+      }
+    }, false)
+
+
+  </script>
+</html>

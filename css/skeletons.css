@@ -1,0 +1,72 @@
+
+body {
+  background: black;
+  overflow: hidden;
+}
+
+#wrapper {
+  width: 1920px;
+  height: 1080px;
+  margin: 0px auto;
+}
+
+.block {
+  display: block;
+  width: 100%;
+}
+
+.skeleton-down {
+  position: relative;
+  float: left;
+  width: 35px;
+  height: 47px;
+  margin: 0px auto;
+  background: url('../images/skeleton/down/spritesheet.png') left center;
+  animation: play-down .8s steps(3) infinite;
+}
+
+@keyframes play-down {
+    100% { background-position: -113px; }
+}
+
+.skeleton-left {
+  position: relative;
+  float: left;
+  width: 35px;
+  height: 47px;
+  margin: 0px auto;
+  background: url('../images/skeleton/left/spritesheet.png') left center;
+  animation: play-left .8s steps(3) infinite;
+}
+
+@keyframes play-left {
+    100% { background-position: -113px; }
+}
+
+.skeleton-right {
+  position: relative;
+  float: left;
+  width: 35px;
+  height: 47px;
+  margin: 0px auto;
+  background: url('../images/skeleton/right/spritesheet.png') left center;
+  animation: play-right .8s steps(3) infinite;
+}
+
+@keyframes play-right {
+    100% { background-position: 113px; }
+}
+
+.skeleton-up {
+  position: relative;
+  float: left;
+  width: 35px;
+  height: 47px;
+  margin: 0px auto;
+  background: url('../images/skeleton/up/spritesheet.png') left center;
+  animation: play-down .8s steps(3) infinite;
+}
+
+@keyframes play-up {
+    100% { background-position: -113px; }
+}
