@@ -13,7 +13,7 @@ function createWindow () {
   mainWindow = new BrowserWindow({fullscreen: true, frame: false})
 
   // and load the index.html of the app.
-  mainWindow.loadURL(`file://${__dirname}/html/index.html`)
+  mainWindow.loadURL(`file://${__dirname}/html/skellington.html`)
 
   // Open the DevTools.
   //mainWindow.webContents.openDevTools()

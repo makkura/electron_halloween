@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Test</title>
+<link rel="stylesheet" type="text/css" href="../css/skellington.css">
+<script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+<script src="../jquery.min.js"></script>    
+<script>if (window.module) module = window.module;</script>
+<script>
+    require('../renderer.js')
+
+
+    document.addEventListener('keydown', event => {
+        if (event.key === 'Escape' || event.keyCode === 27) {
+            window.close();
+        }
+    });
+
+  function setUp() {
+    $('.skelly').css({
+      position: 'absolute',
+      top: '55%',
+      left: '0px'
+    });
+    $('.skelly_right').css({
+      position: 'absolute',
+      top: '45%',
+      right: '0px'
+    });
+    $('.skelly_up').css({
+      position: 'absolute',
+      bottom: '0px',
+      left: '35%' 
+    });
+    $('.skelly_down').css({
+      position: 'absolute',
+      top: '0px',
+      left: '65%'
+    });
+
+    $('.skelly').animate({left: ["+=10000", "linear"]}, 200000);
+    $('.skelly_right').animate({left: ["-=10000", "linear"]}, 200000);
+    $('.skelly_up').animate({top: ["-=10000", "linear"]}, 200000)
+    $('.skelly_down').animate({top:["+=10000", "linear"]}, 200000)
+  }
+  $(function(){
+    setUp();
+    //setInterval(setUp(), 10000);
+    setTimeout(function(){
+       window.location.reload(1);
+    }, 40000);
+  });
+</script>
+</head>
+<body>
+  <div class="skelly"></div>
+  <div class="skelly_right"></div>
+  <div class="skelly_up"></div>
+  <div class="skelly_down"></div>
+</body>
+</html>

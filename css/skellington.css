@@ -1,0 +1,59 @@
+ html, body {
+    margin: 0;
+    padding: 0;
+    background: black;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .skelly {
+    width: 80px;
+    height: 120px;
+    background: url(../images/skellington/skeleton_sheet.png) -20px -400px;
+    background-size: 1152px 512px;
+    image-rendering: pixelated;
+    animation: walk 0.8s steps(9) infinite;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+  }
+
+  .skelly_right {
+    width: 80px;
+    height: 120px;
+    background: url(../images/skellington/skeleton_sheet.png) -20px -160px;
+    background-size: 1152px 512px;
+    image-rendering: pixelated;
+    animation: walk 0.8s steps(9) infinite;
+    position: absolute;
+    top: 120px;
+    right: 0px;
+  }
+
+  .skelly_down {
+    width: 80px;
+    height: 120px;
+    background: url(../images/skellington/skeleton_sheet.png) -20px -280px;
+    background-size: 1152px 512px;
+    image-rendering: pixelated;
+    animation: walk 0.8s steps(9) infinite;
+    position: absolute;
+    top: 0px;
+    left: 65%;
+  }
+
+  .skelly_up {
+    width: 80px;
+    height: 120px;
+    background: url(../images/skellington/skeleton_sheet.png) -20px -20px;
+    background-size: 1152px 512px;
+    image-rendering: pixelated;
+    animation: walk 0.8s steps(9) infinite;
+    position: absolute;
+    bottom: 0px;
+    left: 35%;    
+  }
+
+  @keyframes walk {
+   100% { background-position-x: -1172px; }
+  }
