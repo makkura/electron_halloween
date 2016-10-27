@@ -6,7 +6,21 @@
     overflow: hidden;
   }
 
-  .skelly {
+.mirror {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(../images/mirror.png);
+    background-repeat: no-repeat;
+    background-position: center 35%;
+    background-size: 789px 1152px;
+    opacity: .75;
+    z-index: 1000;    
+  }
+
+  .skelly_left {
     width: 80px;
     height: 120px;
     background: url(../images/skellington/skeleton_sheet.png) -20px -400px;
@@ -14,8 +28,6 @@
     image-rendering: pixelated;
     animation: walk 0.8s steps(9) infinite;
     position: absolute;
-    top: 0px;
-    left: 0px;
   }
 
   .skelly_right {
@@ -26,8 +38,6 @@
     image-rendering: pixelated;
     animation: walk 0.8s steps(9) infinite;
     position: absolute;
-    top: 120px;
-    right: 0px;
   }
 
   .skelly_down {
@@ -38,8 +48,6 @@
     image-rendering: pixelated;
     animation: walk 0.8s steps(9) infinite;
     position: absolute;
-    top: 0px;
-    left: 65%;
   }
 
   .skelly_up {
@@ -50,10 +58,88 @@
     image-rendering: pixelated;
     animation: walk 0.8s steps(9) infinite;
     position: absolute;
-    bottom: 0px;
-    left: 35%;    
   }
 
   @keyframes walk {
    100% { background-position-x: -1172px; }
+  }
+
+  .red_skelly_left {
+    width: 80px;
+    height: 120px;
+    background: url(../images/skellington/skeleton_red.png) -20px -400px;
+    background-size: 1152px 512px;
+    image-rendering: pixelated;
+    animation: walk 0.8s steps(9) infinite;
+    position: absolute;
+  }
+
+  .red_skelly_right {
+    width: 80px;
+    height: 120px;
+    background: url(../images/skellington/skeleton_red.png) -20px -160px;
+    background-size: 1152px 512px;
+    image-rendering: pixelated;
+    animation: walk 0.8s steps(9) infinite;
+    position: absolute;
+  }
+
+  .red_skelly_down {
+    width: 80px;
+    height: 120px;
+    background: url(../images/skellington/skeleton_red.png) -20px -280px;
+    background-size: 1152px 512px;
+    image-rendering: pixelated;
+    animation: walk 0.8s steps(9) infinite;
+    position: absolute;
+  }
+
+  .red_skelly_up {
+    width: 80px;
+    height: 120px;
+    background: url(../images/skellington/skeleton_red.png) -20px -20px;
+    background-size: 1152px 512px;
+    image-rendering: pixelated;
+    animation: walk 0.8s steps(9) infinite;
+    position: absolute;
+  }
+
+  .blue_skelly_left {
+    width: 80px;
+    height: 120px;
+    background: url(../images/skellington/skeleton_blue.png) -20px -400px;
+    background-size: 1152px 512px;
+    image-rendering: pixelated;
+    animation: walk 0.8s steps(9) infinite;
+    position: absolute;
+  }
+
+  .blue_skelly_right {
+    width: 80px;
+    height: 120px;
+    background: url(../images/skellington/skeleton_blue.png) -20px -160px;
+    background-size: 1152px 512px;
+    image-rendering: pixelated;
+    animation: walk 0.8s steps(9) infinite;
+    position: absolute;
+  }
+
+  .blue_skelly_down {
+    width: 80px;
+    height: 120px;
+    background: url(../images/skellington/skeleton_blue.png) -20px -280px;
+    background-size: 1152px 512px;
+    image-rendering: pixelated;
+    animation: walk 0.8s steps(9) infinite;
+    position: absolute;
+  }
+
+  .blue_skelly_up {
+    width: 80px;
+    height: 120px;
+    background: url(../images/skellington/skeleton_blue.png) -20px -20px;
+    background-size: 1152px 512px;
+    image-rendering: pixelated;
+    animation: walk 0.8s steps(9) infinite;
+    position: absolute;
   }

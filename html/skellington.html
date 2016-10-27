@@ -10,53 +10,131 @@
 <script>
     require('../renderer.js')
 
-
     document.addEventListener('keydown', event => {
         if (event.key === 'Escape' || event.keyCode === 27) {
             window.close();
         }
     });
 
-  function setUp() {
-    $('.skelly').css({
-      position: 'absolute',
-      top: '55%',
-      left: '0px'
-    });
-    $('.skelly_right').css({
-      position: 'absolute',
-      top: '45%',
-      right: '0px'
-    });
-    $('.skelly_up').css({
-      position: 'absolute',
-      bottom: '0px',
-      left: '35%' 
-    });
-    $('.skelly_down').css({
-      position: 'absolute',
-      top: '0px',
-      left: '65%'
-    });
+  
+  function createSkeleton(direction) {
+    var offset = offSet(direction);
+    var type = skeletonType(direction);
+    var skeleton_div = $("<div>");
 
-    $('.skelly').animate({left: ["+=10000", "linear"]}, 200000);
-    $('.skelly_right').animate({left: ["-=10000", "linear"]}, 200000);
-    $('.skelly_up').animate({top: ["-=10000", "linear"]}, 200000)
-    $('.skelly_down').animate({top:["+=10000", "linear"]}, 200000)
+    console.log(type[0] + "::" + direction);
+
+    $('body').append(skeleton_div);
+    switch(direction) {
+      case 'left':
+          skeleton_div.addClass(type[0]);
+          skeleton_div.css({"position": "absolute", "left": "0px", "top": offset +"px"});
+          skeleton_div.animate({left: ["+="+type[1]+"", "linear"]}, 200000);
+         break;
+      case 'right':
+          skeleton_div.addClass(type[0]);
+          skeleton_div.css({"position": "absolute", "right": "0px", "top": offset +"px"});
+          skeleton_div.animate({left: ["-="+type[1]+"", "linear"]}, 200000);
+        break;
+      case 'up':
+          skeleton_div.addClass(type[0]);
+          skeleton_div.css({"position": "absolute", "left": offset+"px", "bottom": "0px"});
+          skeleton_div.animate({top: ["-="+type[1]+"", "linear"]}, 200000);
+        break;
+      case 'down':
+          skeleton_div.addClass(type[0]);
+          skeleton_div.css({"position": "absolute", "left": offset+"px", "top": "0px"});
+          skeleton_div.animate({top:["+="+type[1]+"", "linear"]}, 200000);
+        break;
+    }
+    return skeleton_div;
+  }
+
+  function skeletonType(direction){
+    var min = 1, max = 3;
+    var type = Math.floor(Math.random() * (max - min + 1)) + min;
+    if( type == 1 ) { return ['skelly_' + direction, 10000]; }
+    if( type == 2 ) { return ['red_skelly_' + direction, 15000]; }
+    if( type == 3 ) { return ['blue_skelly_' + direction, 7000]; }
+  }
+
+
+  function delayTimer() {
+    var min = 1, max = 10;
+    var delay = Math.floor(Math.random() * (max - min) + min) * 1000;
+
+    return delay;
+  }
+
+  function offSet(direction) {
+    var min = 0, max = 0;
+  
+    switch(direction) {
+      case 'left':
+      case 'right':
+          min = 120;
+          max = window.innerHeight - 120;
+        break;
+      case 'up':
+      case 'down':
+          min = 80;
+          max = window.innerWidth - 80;
+        break;
+    }
+
+    offset = Math.floor(Math.random() * (max - min + 1) + min);
+
+    return offset;
+  }
+
+  function checkSkeletonsOffScreen() {
+    $('.skelly_left,.red_skelly_left,.blue_skelly_left').each(function( index, element ){
+      // if off the right side of the screen, remove and recreate one on the left
+      if( $(element).position().left > window.innerWidth )
+      {
+        $(element).remove();
+        window.setTimeout("createSkeleton('left')", delayTimer());
+      }
+    }); 
+    $('.skelly_right,.red_skelly_right,.blue_skelly_right').each(function( index, element ){
+      if( $(element).position().left < 0 )
+      {
+        $(element).remove();
+        window.setTimeout("createSkeleton('right')", delayTimer());
+      }
+    });
+    $('.skelly_up,.red_skelly_up,.blue_skelly_up').each(function( index, element ){
+      if( $(element).position().top < 0 )
+      {
+        $(element).remove();
+        window.setTimeout("createSkeleton('up')", delayTimer());
+      }
+    });
+    $('.skelly_down,.red_skelly_down,.blue_skelly_down').each(function( index, element ){
+      if( $(element).position().top > window.innerHeight )
+      {
+        $(element).remove();
+        window.setTimeout("createSkeleton('down')", delayTimer());
+      }
+    });
+  }
+
+
+  function setUp() {
+    window.setTimeout("createSkeleton('left')", delayTimer());
+    window.setTimeout("createSkeleton('right')", delayTimer());
+    window.setTimeout("createSkeleton('up')", delayTimer());
+    window.setTimeout("createSkeleton('down')", delayTimer());
+    window.setTimeout("createSkeleton('left')", delayTimer());
+    window.setTimeout("createSkeleton('right')", delayTimer());
   }
   $(function(){
     setUp();
-    //setInterval(setUp(), 10000);
-    setTimeout(function(){
-       window.location.reload(1);
-    }, 40000);
+    window.setInterval('checkSkeletonsOffScreen()', 1000);
   });
 </script>
 </head>
 <body>
-  <div class="skelly"></div>
-  <div class="skelly_right"></div>
-  <div class="skelly_up"></div>
-  <div class="skelly_down"></div>
+  <div class="mirror">
 </body>
 </html>
