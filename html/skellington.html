@@ -125,8 +125,13 @@
     window.setTimeout("createSkeleton('right')", delayTimer());
     window.setTimeout("createSkeleton('up')", delayTimer());
     window.setTimeout("createSkeleton('down')", delayTimer());
+
+    window.setTimeout("createSkeleton('up')", delayTimer()); 
+    window.setTimeout("createSkeleton('left')", delayTimer());
     window.setTimeout("createSkeleton('left')", delayTimer());
     window.setTimeout("createSkeleton('right')", delayTimer());
+    window.setTimeout("createSkeleton('right')", delayTimer());
+
   }
   $(function(){
     setUp();
@@ -135,6 +140,5 @@
 </script>
 </head>
 <body>
-  <div class="mirror">
 </body>
 </html>
